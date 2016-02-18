@@ -1,0 +1,1 @@
+web: gunicorn StackTrader.wsgi --log-file -
