@@ -1,0 +1,10 @@
+<h1>{{ stack.name }}</h1>
+<h3>{{ stack.description }}</h3>
+{% for item in ingredients %}
+    <li>{{ item }}</li>
+{% endfor %}
+
+<br>
+<a href="stack/create/">Make a Stack</a>
+<br>
+<a href="/">Home</a>

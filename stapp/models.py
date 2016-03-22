@@ -24,6 +24,12 @@ class Ingredients(models.Model):
     spinach = models.IntegerField(default=-1)
     cucumber = models.IntegerField(default=-1)
 
+    def all_ingredients(self):
+        all_items = {
+            k: v for k, v in self.__dict__.items()
+            if k not in ['stack_id', 'id', '_state', 'origin']}
+        return all_items
+
 
 class Favorite(models.Model):
 

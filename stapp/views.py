@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 from stapp import models as M
 
@@ -10,6 +10,9 @@ from stapp import models as M
 def index(request):
     all_stacks = M.Stack.objects.values()
     return render(request, 'index.html', dict(stacks=all_stacks))
+
+
+# Auth Views #
 
 
 def signup(request):
@@ -42,6 +45,23 @@ def login_user(request):
             return HttpResponse('Invalid Login.', status=401)
     else:
         return render(request, 'login.html')
+
+
+def logout_user(request):
+    logout(request)
+    return HttpResponse('Logged out!', status=200)
+
+
+# Stack Views #
+
+
+def view_stack(request, stack_name):
+    stack = M.Stack.objects.get(name=stack_name)
+    ingredients = M.Ingredients.objects.get(stack_id=stack._id)
+    return render(
+        request,
+        'details.html',
+        dict(stack=stack, ingredients=ingredients.all_ingredients()))
 
 
 @login_required
