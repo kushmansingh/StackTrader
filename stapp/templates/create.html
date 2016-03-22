@@ -1,0 +1,11 @@
+<h1>Create a Stack</h1>
+<form action="{% url 'create' %}" method="post">
+{% csrf_token %}
+  Stack Name:<br>
+  <input type="text" name="name"><br>
+  Describe:<br>
+  <input type="text" name="description"><br>
+  Ingredients:<br>
+  <input type="text" name="ingredients"><br>
+  <input type="submit" value="Submit">
+</form>

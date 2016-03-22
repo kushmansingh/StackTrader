@@ -1,0 +1,11 @@
+<h1>Create an account</h1>
+<form action="{% url 'signup' %}" method="post">
+{% csrf_token %}
+  Email:<br>
+  <input type="text" name="email"><br>
+  username:<br>
+  <input type="text" name="username"><br>
+  password:<br>
+  <input type="text" name="password"><br>
+  <input type="submit" value="Submit">
+</form>

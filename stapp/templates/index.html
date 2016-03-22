@@ -1,0 +1,13 @@
+StackTrader Home
+<br>
+<a href="/signup/">Sign Up</a>
+<a href="/login/">Log In</a>
+<br>
+
+{% for s in stacks %}
+    <h3>{{ s.name }}: {{ s.rating }} votes</h3>
+    <li>Created: {{ s.created_ts }}</li>
+    <li>{{ s.description }}</li>
+{% endfor %}
+<br>
+<a href="/create/">Make a Stack</a>
