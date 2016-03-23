@@ -70,8 +70,10 @@ def create_stack(request):
         fresh_stack = M.Stack()
         fresh_stack.name = request.POST['name']
         fresh_stack.description = request.POST['description']
-        fresh_stack.user_id = '73f8558f-765c-47b3-b2fa-b9d32b5608df'  # for testing
+        fresh_stack.user_id = request.user.username
         fresh_stack.save()
+        ingredients = M.Ingredients(stack_id=fresh_stack._id)
+        ingredients.save()
         return HttpResponse('Created!', status=201)
     else:
         return render(request, 'create.html')

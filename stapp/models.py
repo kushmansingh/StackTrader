@@ -11,7 +11,7 @@ class Stack(models.Model):
     name = models.CharField(max_length=30, unique=True)
     description = models.TextField()
     # tags = SeparatedValuesField(default=[])
-    user_id = models.UUIDField()  # Created By
+    user_id = models.CharField(max_length=30)
     created_ts = models.DateTimeField(auto_now_add=True)
     rating = models.IntegerField(default=0)  # Update on vote event
 
